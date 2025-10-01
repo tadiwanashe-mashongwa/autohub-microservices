@@ -1,0 +1,23 @@
+# Java / Maven
+target/
+*.iml
+*.class
+*.log
+!.mvn/wrapper/maven-wrapper.jar
+.mvn/
+.idea/
+.project
+.settings/
+.classpath
+
+# Editors / OS
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Node (if any)
+node_modules/
+dist/
+
+# Spring Boot
+*.pid
