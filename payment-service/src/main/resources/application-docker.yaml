@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres-db:5432/autohub_payment_db
+eureka:
+  client:
+    service-url:
+      defaultZone: http://discovery-server:8761/eureka

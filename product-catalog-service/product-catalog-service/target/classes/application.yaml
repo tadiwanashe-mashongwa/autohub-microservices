@@ -1,0 +1,36 @@
+# application.yaml for Product Catalog Service
+
+# Custom application properties
+application:
+  security:
+    jwt:
+      secret-key: 4D6251655468576D5A7134743777217A25432A462D4A614E645267556B587032
+
+# Server properties
+server:
+  port: 8081
+
+# Spring-specific properties
+spring:
+  application:
+    name: product-catalog-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/autohub_product_db
+    username: postgres
+    password: mysecretpassword
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+# Eureka Client Configuration
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
