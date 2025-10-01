@@ -1,0 +1,49 @@
+# The complete and final application.yaml for the API Gateway
+
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      # CORRECTED: 'routes' is now at the same level as 'discovery', directly under 'gateway'.
+      routes:
+        # Route for all auth and user related endpoints
+        - id: auth-service-route
+          uri: lb://AUTH-SERVICE
+          predicates:
+            - Path=/api/v1/auth/**, /api/v1/users/**
+
+        # Specific route for product endpoints
+        - id: products-route
+          uri: lb://PRODUCT-CATALOG-SERVICE
+          predicates:
+            - Path=/api/v1/products/**
+
+        # Specific route for category endpoints
+        - id: categories-route
+          uri: lb://PRODUCT-CATALOG-SERVICE
+          predicates:
+            - Path=/api/v1/categories/**
+
+        # Route for the inventory service
+        - id: inventory-service-route
+          uri: lb://INVENTORY-SERVICE
+          predicates:
+            - Path=/api/v1/inventory/**
+
+        # Route for the order service
+        - id: order-service-route
+          uri: lb://ORDER-SERVICE
+          predicates:
+            - Path=/api/v1/orders/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka

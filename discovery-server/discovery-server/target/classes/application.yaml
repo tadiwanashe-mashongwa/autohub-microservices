@@ -1,0 +1,22 @@
+# application.yaml for Eureka Discovery Server
+
+# The standard port for Eureka is 8761
+server:
+  port: 8761
+
+spring:
+  application:
+    name: discovery-server
+
+# --- Eureka Server Configuration ---
+# These settings are crucial for a standalone server.
+eureka:
+  server:
+    # Disable self-preservation for a cleaner dev experience
+    enable-self-preservation: false
+  client:
+
+    # A discovery server should not register itself in the registry.
+    register-with-eureka: false
+    # A discovery server does not need to fetch the registry, as it IS the registry.
+    fetch-registry: false
