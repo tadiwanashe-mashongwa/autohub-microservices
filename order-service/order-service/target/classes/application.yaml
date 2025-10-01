@@ -1,0 +1,40 @@
+# application.yaml for Order Service
+
+# Custom application properties
+application:
+  security:
+    jwt:
+      secret-key: 4D6251655468576D5A7134743777217A25432A462D4A614E645267556B587032
+
+# Server properties
+server:
+  port: 8083
+
+# Spring-specific properties
+spring:
+  application:
+    name: order-service
+
+  # --- Database Configuration (A SEPARATE DATABASE) ---
+  datasource:
+    url: jdbc:postgresql://localhost:5432/autohub_order_db
+    username: postgres
+    password: mysecretpassword
+
+  # --- JPA and Flyway ---
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+# --- Eureka Client Configuration ---
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka

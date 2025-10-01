@@ -1,0 +1,7 @@
+spring:
+  rabbitmq:
+    host: rabbitmq
+eureka:
+  client:
+    service-url:
+      defaultZone: http://discovery-server:8761/eureka

@@ -1,0 +1,22 @@
+# application.yaml for Notification Service
+
+# Run this service on a new, unique port
+server:
+  port: 8084
+
+spring:
+  application:
+    name: notification-service
+
+  # --- RabbitMQ Connection Configuration ---
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+# --- Eureka Client Configuration ---
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
